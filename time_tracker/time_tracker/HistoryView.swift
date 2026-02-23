@@ -3,11 +3,11 @@ import SwiftData
 
 struct HistoryView: View {
     @Environment(\.modelContext) private var modelContext
-    @Query(sort: \Task.createdAt) private var tasks: [Task]
+    @Query(sort: \TaskModel.createdAt) private var tasks: [TaskModel]
 
     @State private var selectedDate = Date().startOfDay
 
-    private var activeTasks: [Task] {
+    private var activeTasks: [TaskModel] {
         tasks.filter { !$0.isArchived }
     }
 

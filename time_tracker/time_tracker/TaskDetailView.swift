@@ -1,9 +1,10 @@
 import SwiftUI
 import SwiftData
+import Charts
 
 struct TaskDetailView: View {
     @Environment(\.modelContext) private var modelContext
-    @Bindable var task: Task
+    @Bindable var task: TaskModel
 
     private let calendar = Calendar.current
 
@@ -43,6 +44,12 @@ struct TaskDetailView: View {
         }
     }
 
+    private var timeSeries: [DayValue] {
+        last30Days.reversed().map { date in
+            DayValue(date: date, value: Double(minutes(for: date)))
+        }
+    }
+
     var body: some View {
         List {
             Section("Consistency") {
@@ -54,6 +61,25 @@ struct TaskDetailView: View {
                     }
                 }
                 .padding(.vertical, 4)
+            }
+
+            Section("Time Trend") {
+                Chart(timeSeries) { point in
+                    LineMark(
+                        x: .value("Day", point.date),
+                        y: .value("Minutes", point.value)
+                    )
+                    .interpolationMethod(.catmullRom)
+                }
+                .frame(height: 160)
+            }
+
+            if !task.attributes.isEmpty {
+                Section("Attributes") {
+                    ForEach(task.attributes) { attribute in
+                        AttributeTrendView(attribute: attribute)
+                    }
+                }
             }
 
             Section("Stats") {
@@ -71,10 +97,12 @@ struct TaskDetailView: View {
     }
 
     private func minutes(for date: Date) -> Int {
-        guard let log = task.logs.first(where: { $0.day.startOfDay == date.startOfDay }) else {
-            return 0
+        let manual = task.logs.first(where: { $0.day.startOfDay == date.startOfDay })?.manualMinutesValue ?? 0
+        let timed = task.timeEntries.reduce(0) { total, entry in
+            guard entry.startedAt >= date.startOfDay && entry.startedAt < date.endOfDay else { return total }
+            return total + entry.minutes
         }
-        return log.minutes
+        return manual + timed
     }
 
     @ViewBuilder
@@ -86,4 +114,10 @@ struct TaskDetailView: View {
                 .foregroundStyle(.secondary)
         }
     }
+}
+
+private struct DayValue: Identifiable {
+    let id = UUID()
+    let date: Date
+    let value: Double
 }

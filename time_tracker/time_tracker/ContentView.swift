@@ -16,9 +16,19 @@ struct ContentView: View {
                     Label("Today", systemImage: "checkmark.circle")
                 }
 
+            CalendarView()
+                .tabItem {
+                    Label("Calendar", systemImage: "calendar")
+                }
+
             HistoryView()
                 .tabItem {
-                    Label("History", systemImage: "calendar")
+                    Label("History", systemImage: "clock.arrow.circlepath")
+                }
+
+            AboutView()
+                .tabItem {
+                    Label("About", systemImage: "info.circle")
                 }
         }
     }
@@ -26,5 +36,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
-        .modelContainer(for: [Task.self, DailyLog.self], inMemory: true)
+        .modelContainer(for: [TaskModel.self, DailyLog.self, TimeEntry.self, TaskAttribute.self, TaskAttributeEntry.self, Milestone.self, ScheduleItem.self], inMemory: true)
 }

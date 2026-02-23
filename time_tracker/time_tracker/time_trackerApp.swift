@@ -12,8 +12,13 @@ import SwiftData
 struct time_trackerApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Task.self,
+            TaskModel.self,
             DailyLog.self,
+            TimeEntry.self,
+            TaskAttribute.self,
+            TaskAttributeEntry.self,
+            Milestone.self,
+            ScheduleItem.self,
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
@@ -27,6 +32,9 @@ struct time_trackerApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .onAppear {
+                    NotificationsManager.shared.requestAuthorization()
+                }
         }
         .modelContainer(sharedModelContainer)
     }

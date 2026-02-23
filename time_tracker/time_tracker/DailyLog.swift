@@ -3,15 +3,20 @@ import SwiftData
 
 @Model
 final class DailyLog {
-    var task: Task
+    var task: TaskModel
     var day: Date
     var did: Bool
-    var minutes: Int
+    var manualMinutes: Int?
 
-    init(task: Task, day: Date, did: Bool = false, minutes: Int = 0) {
+    init(task: TaskModel, day: Date, did: Bool = false, manualMinutes: Int? = nil) {
         self.task = task
         self.day = day
         self.did = did
-        self.minutes = minutes
+        self.manualMinutes = manualMinutes
+    }
+
+    var manualMinutesValue: Int {
+        get { manualMinutes ?? 0 }
+        set { manualMinutes = newValue }
     }
 }
