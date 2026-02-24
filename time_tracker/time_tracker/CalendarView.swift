@@ -8,6 +8,9 @@ struct CalendarView: View {
 
     @State private var selectedDate = Date().startOfDay
     @State private var isAddingSchedule = false
+    @State private var isAddingTimeBlock = false
+    @State private var timeEntryToEdit: TimeEntry?
+    @State private var scheduleToEdit: ScheduleItem?
 
     private let calendar = Calendar.current
 
@@ -28,10 +31,18 @@ struct CalendarView: View {
         }
     }
 
+    private var dayManualEntries: [TimeEntry] {
+        dayEntries.filter { $0.endedAt != nil }
+    }
+
     private var daySchedules: [ScheduleItem] {
         scheduleItems.filter { item in
             item.startAt < selectedDate.endOfDay && item.endAt >= selectedDate.startOfDay
         }
+    }
+
+    private var dayScheduleEntries: [ScheduleItem] {
+        daySchedules
     }
 
     var body: some View {
@@ -44,7 +55,11 @@ struct CalendarView: View {
                         WeekStripView(dates: weekDates, selectedDate: $selectedDate)
                     }
 
-                    TimelineView(day: selectedDate, entries: dayEntries, schedules: daySchedules)
+                    TimelineView(day: selectedDate, entries: dayManualEntries, schedules: daySchedules, onEntryTap: { entry in
+                        timeEntryToEdit = entry
+                    }, onScheduleTap: { item in
+                        scheduleToEdit = item
+                    })
                 }
                 .padding(.horizontal)
                 .padding(.top, 8)
@@ -52,10 +67,15 @@ struct CalendarView: View {
             .navigationTitle("Calendar")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        isAddingSchedule = true
+                    Menu {
+                        Button("Add Time Block") {
+                            isAddingTimeBlock = true
+                        }
+                        Button("Add Schedule") {
+                            isAddingSchedule = true
+                        }
                     } label: {
-                        Image(systemName: "calendar.badge.plus")
+                        Image(systemName: "plus")
                     }
                 }
             }
@@ -64,6 +84,22 @@ struct CalendarView: View {
                     let item = ScheduleItem(title: title, startAt: start, endAt: end, note: note)
                     modelContext.insert(item)
                 }
+            }
+            .sheet(isPresented: $isAddingTimeBlock) {
+                TimeEntryEditorView(tasks: tasks) { task, start, end, note in
+                    let entry = TimeEntry(task: task, startedAt: start, endedAt: end, minutes: max(1, Int(end.timeIntervalSince(start) / 60)), note: note)
+                    modelContext.insert(entry)
+                }
+            }
+            .sheet(item: $timeEntryToEdit) { (entry: TimeEntry) in
+                TimeEntryEditView(entry: entry, onDelete: {
+                    modelContext.delete(entry)
+                })
+            }
+            .sheet(item: $scheduleToEdit) { (item: ScheduleItem) in
+                ScheduleItemEditView(item: item, onDelete: {
+                    modelContext.delete(item)
+                })
             }
         }
     }

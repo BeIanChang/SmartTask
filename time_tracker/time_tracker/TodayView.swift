@@ -44,6 +44,7 @@ struct TodayView: View {
                         ForEach(activeMilestones) { milestone in
                             MilestoneRowView(milestone: milestone)
                         }
+                        .onDelete(perform: deleteMilestones)
                     }
                 }
 
@@ -70,6 +71,7 @@ struct TodayView: View {
                                 TaskRowView(task: task, day: .now, showsTimer: true)
                             }
                         }
+                        .onDelete(perform: deleteTasks)
                     }
                 }
             }
@@ -90,6 +92,9 @@ struct TodayView: View {
                         Image(systemName: "flag")
                     }
                 }
+                ToolbarItem(placement: .navigationBarLeading) {
+                    EditButton()
+                }
             }
             .sheet(isPresented: $isAddingTask) {
                 TaskEditorView { title, draft in
@@ -108,6 +113,20 @@ struct TodayView: View {
                     NotificationsManager.shared.scheduleMilestoneNotification(milestone)
                 }
             }
+        }
+    }
+
+    private func deleteTasks(offsets: IndexSet) {
+        for index in offsets {
+            modelContext.delete(activeTasks[index])
+        }
+    }
+
+    private func deleteMilestones(offsets: IndexSet) {
+        for index in offsets {
+            let milestone = activeMilestones[index]
+            NotificationsManager.shared.removeMilestoneNotification(milestone)
+            modelContext.delete(milestone)
         }
     }
 }

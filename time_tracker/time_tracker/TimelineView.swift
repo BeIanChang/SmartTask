@@ -4,6 +4,8 @@ struct TimelineView: View {
     let day: Date
     let entries: [TimeEntry]
     let schedules: [ScheduleItem]
+    let onEntryTap: (TimeEntry) -> Void
+    let onScheduleTap: (ScheduleItem) -> Void
 
     private let calendar = Calendar.current
 
@@ -33,6 +35,9 @@ struct TimelineView: View {
                             .padding(8)
                             .background(block.color.opacity(0.15))
                             .clipShape(RoundedRectangle(cornerRadius: 8))
+                            .onTapGesture {
+                                block.onTap()
+                            }
                         }
                     }
 
@@ -63,7 +68,8 @@ struct TimelineView: View {
             return TimelineBlock(
                 title: entry.task.title,
                 color: .purple,
-                timeRange: timeRange(start: entry.startedAt, end: end)
+                timeRange: timeRange(start: entry.startedAt, end: end),
+                onTap: { onEntryTap(entry) }
             )
         }
 
@@ -72,7 +78,8 @@ struct TimelineView: View {
             return TimelineBlock(
                 title: item.title,
                 color: .teal,
-                timeRange: timeRange(start: item.startAt, end: item.endAt)
+                timeRange: timeRange(start: item.startAt, end: item.endAt),
+                onTap: { onScheduleTap(item) }
             )
         }
 
@@ -91,4 +98,5 @@ private struct TimelineBlock: Identifiable {
     let title: String
     let color: Color
     let timeRange: String
+    let onTap: () -> Void
 }

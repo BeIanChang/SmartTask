@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		3C6774B62F4E4EE20009243E /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C6774B52F4E4EE20009243E /* WidgetKit.framework */; };
+		3C6774B82F4E4EE20009243E /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C6774B72F4E4EE20009243E /* SwiftUI.framework */; };
+		3C6774C92F4E4EE40009243E /* SmartTaskLiveActivityExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 3C6774B32F4E4EE20009243E /* SmartTaskLiveActivityExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		3C3A5F8D2F43AAF900C05FC9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -21,14 +27,47 @@
 			remoteGlobalIDString = 3C3A5F7C2F43AAF700C05FC9;
 			remoteInfo = time_tracker;
 		};
+		3C6774C72F4E4EE40009243E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3C3A5F752F43AAF700C05FC9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3C6774B22F4E4EE20009243E;
+			remoteInfo = SmartTaskLiveActivityExtension;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3C6774CE2F4E4EE40009243E /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				3C6774C92F4E4EE40009243E /* SmartTaskLiveActivityExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		3C3A5F7D2F43AAF700C05FC9 /* time_tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = time_tracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C3A5F8C2F43AAF900C05FC9 /* time_trackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = time_trackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C3A5F962F43AAF900C05FC9 /* time_trackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = time_trackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3CAE43462F4CFBCC00984CDC /* time_tracker.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = time_tracker.xcodeproj; sourceTree = "<group>"; };
+		3C6774B32F4E4EE20009243E /* SmartTaskLiveActivityExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SmartTaskLiveActivityExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C6774B52F4E4EE20009243E /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		3C6774B72F4E4EE20009243E /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		3C6774CA2F4E4EE40009243E /* Exceptions for "SmartTaskLiveActivity" folder in "SmartTaskLiveActivityExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 3C6774B22F4E4EE20009243E /* SmartTaskLiveActivityExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		3C3A5F7F2F43AAF700C05FC9 /* time_tracker */ = {
@@ -44,6 +83,14 @@
 		3C3A5F992F43AAF900C05FC9 /* time_trackerUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = time_trackerUITests;
+			sourceTree = "<group>";
+		};
+		3C6774B92F4E4EE20009243E /* SmartTaskLiveActivity */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				3C6774CA2F4E4EE40009243E /* Exceptions for "SmartTaskLiveActivity" folder in "SmartTaskLiveActivityExtension" target */,
+			);
+			path = SmartTaskLiveActivity;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -70,6 +117,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3C6774B02F4E4EE20009243E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C6774B82F4E4EE20009243E /* SwiftUI.framework in Frameworks */,
+				3C6774B62F4E4EE20009243E /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -79,6 +135,8 @@
 				3C3A5F7F2F43AAF700C05FC9 /* time_tracker */,
 				3C3A5F8F2F43AAF900C05FC9 /* time_trackerTests */,
 				3C3A5F992F43AAF900C05FC9 /* time_trackerUITests */,
+				3C6774B92F4E4EE20009243E /* SmartTaskLiveActivity */,
+				3C6774B42F4E4EE20009243E /* Frameworks */,
 				3C3A5F7E2F43AAF700C05FC9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -89,13 +147,18 @@
 				3C3A5F7D2F43AAF700C05FC9 /* time_tracker.app */,
 				3C3A5F8C2F43AAF900C05FC9 /* time_trackerTests.xctest */,
 				3C3A5F962F43AAF900C05FC9 /* time_trackerUITests.xctest */,
+				3C6774B32F4E4EE20009243E /* SmartTaskLiveActivityExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		3CAE434D2F4CFBCC00984CDC /* Products */ = {
+		3C6774B42F4E4EE20009243E /* Frameworks */ = {
 			isa = PBXGroup;
-			name = Products;
+			children = (
+				3C6774B52F4E4EE20009243E /* WidgetKit.framework */,
+				3C6774B72F4E4EE20009243E /* SwiftUI.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -108,10 +171,12 @@
 				3C3A5F792F43AAF700C05FC9 /* Sources */,
 				3C3A5F7A2F43AAF700C05FC9 /* Frameworks */,
 				3C3A5F7B2F43AAF700C05FC9 /* Resources */,
+				3C6774CE2F4E4EE40009243E /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				3C6774C82F4E4EE40009243E /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				3C3A5F7F2F43AAF700C05FC9 /* time_tracker */,
@@ -169,6 +234,28 @@
 			productReference = 3C3A5F962F43AAF900C05FC9 /* time_trackerUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		3C6774B22F4E4EE20009243E /* SmartTaskLiveActivityExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3C6774CB2F4E4EE40009243E /* Build configuration list for PBXNativeTarget "SmartTaskLiveActivityExtension" */;
+			buildPhases = (
+				3C6774AF2F4E4EE20009243E /* Sources */,
+				3C6774B02F4E4EE20009243E /* Frameworks */,
+				3C6774B12F4E4EE20009243E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				3C6774B92F4E4EE20009243E /* SmartTaskLiveActivity */,
+			);
+			name = SmartTaskLiveActivityExtension;
+			packageProductDependencies = (
+			);
+			productName = SmartTaskLiveActivityExtension;
+			productReference = 3C6774B32F4E4EE20009243E /* SmartTaskLiveActivityExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -190,6 +277,9 @@
 						CreatedOnToolsVersion = 26.2;
 						TestTargetID = 3C3A5F7C2F43AAF700C05FC9;
 					};
+					3C6774B22F4E4EE20009243E = {
+						CreatedOnToolsVersion = 26.2;
+					};
 				};
 			};
 			buildConfigurationList = 3C3A5F782F43AAF700C05FC9 /* Build configuration list for PBXProject "time_tracker" */;
@@ -204,17 +294,12 @@
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 3C3A5F7E2F43AAF700C05FC9 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 3CAE434D2F4CFBCC00984CDC /* Products */;
-					ProjectRef = 3CAE43462F4CFBCC00984CDC /* time_tracker.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				3C3A5F7C2F43AAF700C05FC9 /* time_tracker */,
 				3C3A5F8B2F43AAF900C05FC9 /* time_trackerTests */,
 				3C3A5F952F43AAF900C05FC9 /* time_trackerUITests */,
+				3C6774B22F4E4EE20009243E /* SmartTaskLiveActivityExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -235,6 +320,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		3C3A5F942F43AAF900C05FC9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3C6774B12F4E4EE20009243E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -265,6 +357,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3C6774AF2F4E4EE20009243E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -277,6 +376,11 @@
 			isa = PBXTargetDependency;
 			target = 3C3A5F7C2F43AAF700C05FC9 /* time_tracker */;
 			targetProxy = 3C3A5F972F43AAF900C05FC9 /* PBXContainerItemProxy */;
+		};
+		3C6774C82F4E4EE40009243E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3C6774B22F4E4EE20009243E /* SmartTaskLiveActivityExtension */;
+			targetProxy = 3C6774C72F4E4EE40009243E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -546,6 +650,68 @@
 			};
 			name = Release;
 		};
+		3C6774CC2F4E4EE40009243E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7H8Y5HD6QZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SmartTaskLiveActivity/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SmartTaskLiveActivity;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "ian.time-tracker.SmartTaskLiveActivity";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3C6774CD2F4E4EE40009243E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7H8Y5HD6QZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SmartTaskLiveActivity/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SmartTaskLiveActivity;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "ian.time-tracker.SmartTaskLiveActivity";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -581,6 +747,15 @@
 			buildConfigurations = (
 				3C3A5FA72F43AAF900C05FC9 /* Debug */,
 				3C3A5FA82F43AAF900C05FC9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3C6774CB2F4E4EE40009243E /* Build configuration list for PBXNativeTarget "SmartTaskLiveActivityExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3C6774CC2F4E4EE40009243E /* Debug */,
+				3C6774CD2F4E4EE40009243E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

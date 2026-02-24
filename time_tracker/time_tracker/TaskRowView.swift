@@ -64,6 +64,7 @@ struct TaskRowView: View {
                 } else {
                     log.manualMinutesValue = 0
                 }
+                presentAttributesForToday()
             } label: {
                 Image(systemName: log.did ? "checkmark.circle.fill" : "circle")
                     .foregroundStyle(log.did ? .green : .secondary)
@@ -153,6 +154,7 @@ struct TaskRowView: View {
         let entry = TimeEntry(task: task, startedAt: Date())
         task.runningStartAt = entry.startedAt
         modelContext.insert(entry)
+        NotificationsManager.shared.startTimerActivity(for: task)
     }
 
     private func stopTimer() {
@@ -163,6 +165,7 @@ struct TaskRowView: View {
         task.runningStartAt = nil
         log.did = true
         noteEntry = entry
+        NotificationsManager.shared.stopTimerActivity()
         presentAttributesForToday()
     }
 
